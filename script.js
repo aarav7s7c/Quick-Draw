@@ -366,14 +366,40 @@ sktchguess= "";
 sktchmatch= "";
 score = 0;
 
+function draw() {
+  checkskth();
 
+}
 
+function update() {
+  // document.getElementsByName("canvas").background 
+  random = Math.floor(Math.random() * drawset.length + 1);
+  sktch = drawset[random];
+  console.log(sktch + " " + random);
+  document.getElementById("Sketchname").innerHTML = " " + sktch;
+}
 
+function checkskth() {
+  if (sktchguess == sktch) {
+    sktchmatch = "set";
+    score = +1;
+    document.getElementById("scre").innerHTML = " " + score;
+  }
 
+  timer++;
+  console.log(timer);
+  if (timer > 1000) {
+  timer = 0;
+  checktim = "completed"
+}
 
+if (checktim == "completed" || sktchmatch == "set") {
+  checktim = "";
+  sktchmatch = "";
+  update();
+}
 
-
-
+}
 
 
 
